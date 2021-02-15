@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
-using Core.Utilities.Results;
+using Business.Constants;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -19,12 +21,14 @@ namespace Business.Concrete
 
         public IResult Add(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Add(color);
+            return new SuccessResult(Messages.ColorAdded);
         }
 
         public IResult Delete(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Delete(color);
+            return new SuccessResult(Messages.ColorDeleted);
         }
 
         public IDataResult<List<Color>> GetAll()
@@ -44,7 +48,8 @@ namespace Business.Concrete
 
         public IResult Update(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Update(color);
+            return new SuccessResult(Messages.ColorUpdated);
         }
     }
 }

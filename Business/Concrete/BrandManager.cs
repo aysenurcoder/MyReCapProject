@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
-using Core.Utilities.Results;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -31,7 +32,8 @@ namespace Business.Concrete
 
         public IResult Delete(Brand brand)
         {
-            throw new NotImplementedException();
+            _brandDal.Delete(brand);
+            return new SuccessResult(Messages.BrandDeleted);
         }
 
         public IDataResult<List<Brand>> GetAll()
@@ -60,7 +62,7 @@ namespace Business.Concrete
             {
                 Console.WriteLine("Araba markası ismi en az iki karakter olmalıdır. Girdiğiniz değer:" + (brand.BrandName));
             }
-            return new SuccessResult();
+            return new SuccessResult(Messages.BrandUpdated);
         }
     }
 }

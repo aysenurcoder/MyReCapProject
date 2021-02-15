@@ -12,6 +12,66 @@ namespace ConsoleUI
             //CarTest();
             //BrandTest();
             //ColorTest();
+            //CustomerTest();
+            //UserTest();
+            //RentalTest();
+        }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var result = rentalManager.GetAll();
+
+            if (result.Success == true)
+            {
+                foreach (var rental in result.Data)
+                {
+                    Console.WriteLine(rental.CarId + " / " + rental.CustomerId + " / " + rental.RentalId + " / " + rental.RentDate + " / " + rental.ReturnDate);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void UserTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            var result = userManager.GetAll();
+
+            if (result.Success == true)
+            {
+                foreach (var user in result.Data)
+                {
+                    Console.WriteLine(user.Email + " / " + user.Password + " / " + user.FirstName + " / " + user.LastName + " / " + user.UserId);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManger customerManger = new CustomerManger(new EfCustomerDal());
+
+            var result = customerManger.GetAll();
+
+            if (result.Success == true)
+            {
+                foreach (var customer in result.Data)
+                {
+                    Console.WriteLine(customer.CompanyName + " / " + customer.CustomerId);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
 
         private static void ColorTest()
@@ -24,7 +84,7 @@ namespace ConsoleUI
             {
                 foreach (var color in result.Data)
                 {
-                    Console.WriteLine(color.ColorName + "/" + color.ColorId);
+                    Console.WriteLine(color.ColorName + " / " + color.ColorId);
                 }
             }
             else
@@ -44,7 +104,7 @@ namespace ConsoleUI
             {
                 foreach (var brand in result.Data)
                 {
-                    Console.WriteLine(brand.BrandName + "/" + brand.BrandId);
+                    Console.WriteLine(brand.BrandName + " / " + brand.BrandId);
                 }
             }
             else
@@ -64,7 +124,7 @@ namespace ConsoleUI
             {
                 foreach (var car in result.Data)
                 {
-                    Console.WriteLine(car.CarId + "/" + car.DailyPrice + "/" + car.BrandName + "/" + car.ColorName);
+                    Console.WriteLine(car.CarId + " / " + car.DailyPrice + " / " + car.BrandName + " / " + car.ColorName);
                 }
             }
             else

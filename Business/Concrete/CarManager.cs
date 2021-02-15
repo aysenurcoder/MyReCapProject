@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
-using Core.Utilities.Results;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -31,12 +32,13 @@ namespace Business.Concrete
                 Console.WriteLine("Arabanın günlük fiyati 0 dan büyük olmalıdır. Girdiğiniz değer" + (car.DailyPrice));
             }
             
-            return new SuccessResult();
+            return new SuccessResult(Messages.CarAdded);
         }
 
         public IResult Delete(Car car)
         {
-            throw new NotImplementedException();
+            _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -70,7 +72,8 @@ namespace Business.Concrete
 
         public IResult Update(Car car)
         {
-            throw new NotImplementedException();
+            _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
         }
     }
 }
