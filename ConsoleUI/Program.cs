@@ -57,7 +57,7 @@ namespace ConsoleUI
 
         private static void CustomerTest()
         {
-            CustomerManger customerManger = new CustomerManger(new EfCustomerDal());
+            CustomerManager customerManger = new CustomerManager(new EfCustomerDal());
 
             var result = customerManger.GetAll();
 
