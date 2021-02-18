@@ -15,6 +15,7 @@ namespace Business.Constants
 
         //Araba için mesajlar
         public static string CarAdded = "Araba eklendi.";
+        public static string CarAddedError = "Araba eklenemedi.Arabanın günlük fiyatı 0 dan büyük olmalıdır.";
         public static string CarDeleted = "Araba silindi.";
         public static string CarUpdated = "Araba güncellendi.";
         internal static string CarsListed="Arabalar listelendi.";
