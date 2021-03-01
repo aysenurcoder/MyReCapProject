@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
-    public class CarImgesController:ControllerBase
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CarImagesController : ControllerBase
     {
         ICarImageService _carImageService;
 
-        public CarImgesController(ICarImageService carImageService)
+        public CarImagesController(ICarImageService carImageService)
         {
             _carImageService = carImageService;
         }
@@ -83,6 +85,5 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
     }
 }
