@@ -46,7 +46,7 @@ namespace ConsoleUI
             {
                 foreach (var user in result.Data)
                 {
-                    Console.WriteLine(user.Email + " / " + user.Password + " / " + user.FirstName + " / " + user.LastName + " / " + user.UserId);
+                    Console.WriteLine(user.Email + " / " + user.PasswordHash + " / " + user.FirstName + " / " + user.LastName + " / " + user.UserId);
                 }
             }
             else
