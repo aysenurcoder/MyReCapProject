@@ -58,8 +58,8 @@ namespace Business.Concrete
             return new SuccessResult(Messages.RentalDeleted);
         }
 
-        [SecuredOperation("admin,user")]
-        [CacheAspect]
+        //[SecuredOperation("admin,user")]
+        //[CacheAspect]
         public IDataResult<List<Rental>> GetAll()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());

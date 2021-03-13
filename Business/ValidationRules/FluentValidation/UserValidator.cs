@@ -11,9 +11,9 @@ namespace Business.ValidationRules.FluentValidation
         public UserValidator()
         {
             RuleFor(u => u.Email).EmailAddress();
-            RuleFor(u => u.FirstName).NotEmpty();
-            RuleFor(u => u.LastName).NotEmpty();
-            RuleFor(u => u.PasswordHash).NotEmpty();
+           // RuleFor(u => u.FirstName).NotEmpty();
+           // RuleFor(u => u.LastName).NotEmpty();
+           // RuleFor(u => u.PasswordHash).NotEmpty();
             //RuleFor(u => u.UserId).NotEmpty();
         }
     }
