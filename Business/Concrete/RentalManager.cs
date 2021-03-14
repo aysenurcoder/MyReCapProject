@@ -13,6 +13,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Business.Concrete
@@ -51,7 +52,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.RentalAdded);
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
@@ -65,21 +66,21 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
-        [SecuredOperation("admin,user")]
-        [CacheAspect]
+        //[SecuredOperation("admin,user")]
+        //[CacheAspect]
         public IDataResult<Rental> GetById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentalId == id));
         }
 
-        public IDataResult<List<RentalDetailDto>> GetRentalDetails(int carId)
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails(Expression<Func<Rental, bool>> filter = null)
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(c=> c.CarId == carId));
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetCarDetails(filter), Messages.RentalListedCarAndCustomer);
         }
 
-        [SecuredOperation("admin")]
-        [ValidationAspect(typeof(RentalValidator))]
-        [CacheRemoveAspect("IRentalService.Get")]
+        //[SecuredOperation("admin")]
+        //[ValidationAspect(typeof(RentalValidator))]
+        //[CacheRemoveAspect("IRentalService.Get")]
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);

@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
 
             var result = _rentalService.GetAll();
             if (result.Success) 
@@ -62,6 +62,17 @@ namespace WebAPI.Controllers
             var result = _rentalService.GetById(id);
             if (result.Success) 
             { 
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getallrentaldetails")]
+        public IActionResult GetAllCarDetails()
+        {
+            var result = _rentalService.GetRentalDetails();
+            if (result.Success)
+            {
                 return Ok(result);
             }
             return BadRequest(result);

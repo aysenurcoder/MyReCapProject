@@ -40,7 +40,7 @@ namespace Business.Concrete
 
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
@@ -57,8 +57,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
         }
 
-        [SecuredOperation("admin,user")]
-        [CacheAspect]
+        //[SecuredOperation("admin,user")]
+        //[CacheAspect]
         public IDataResult<List<Car>> GetAllById(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c=> c.CarId== id));

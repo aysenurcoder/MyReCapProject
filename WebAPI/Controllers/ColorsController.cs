@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
 
             var result = _colorService.GetAll();
             if (result.Success) 
