@@ -124,7 +124,7 @@ namespace ConsoleUI
             {
                 foreach (var car in result.Data)
                 {
-                    Console.WriteLine(car.CarId + " / " + car.DailyPrice + " / " + car.BrandName + " / " + car.ColorName);
+                    Console.WriteLine(car.CarId + " / " + car.BrandName + " / " + car.ColorName);
                 }
             }
             else

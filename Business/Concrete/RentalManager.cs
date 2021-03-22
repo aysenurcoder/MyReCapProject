@@ -44,7 +44,7 @@ namespace Business.Concrete
 
         public IResult CheckReturnDate(int carId)
         {
-            var result = _rentalDal.GetRentalDetails(a => a.CarId == carId && a.ReturnDate == null);
+            var result = _rentalDal.GetRentalDetails();
             if (result.Count > 0)
             {
                 return new ErrorResult(Messages.RentalAddedError);
@@ -75,7 +75,7 @@ namespace Business.Concrete
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails(Expression<Func<Rental, bool>> filter = null)
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetCarDetails(filter), Messages.RentalListedCarAndCustomer);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(filter));
         }
 
         //[SecuredOperation("admin")]
